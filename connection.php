@@ -3,6 +3,7 @@
 <?php
 # connection.php
 require_once ('config.php');
+/*
 class MySQLConnection
 {
     private static $instance = NULl;
@@ -20,3 +21,17 @@ class MySQLConnection
 }
 
 $mysql = MySQLConnection::getInstance();
+*/
+
+class MongoConnection{
+
+}
+class RedisConnection{
+
+}
+class CassandraConnection{
+
+}
+class Neo4JConnection{
+
+}
