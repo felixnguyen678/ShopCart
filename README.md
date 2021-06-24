@@ -11,7 +11,7 @@ An E-Commerce Site that uses 4 NoSQL Databases:
 
 ## Installation
 
-- Download PHP interpreter.
+- Download PHP XAMPP.
 - Run `C:\xampp\php\php.exe -S localhost:3000 -t {{your_directory}}\ShopCart`
 
 ## Visit site
