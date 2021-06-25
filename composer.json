@@ -1,0 +1,6 @@
+{
+  "require": {
+    "neoxygen/neoclient": "3.3.14",
+    "mongodb/mongodb": "^1.8"
+  }
+}
