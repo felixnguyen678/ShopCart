@@ -1,5 +1,5 @@
 
-<a class="shopBtn btn-block" href="#">Các sản phẩm bán chạy nhất <br><small>Click để xem</small></a>
+<a class="shopBtn btn-block" href="#">BÊN DƯỚI LÀ CÁC SẢN PHẨM BÁN CHẠY NHẤT <br><small>Click để xem thêm</small></a>
 <br>
 <br>
 <ul class="nav nav-list promowrapper">

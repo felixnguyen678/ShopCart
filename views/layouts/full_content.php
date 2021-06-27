@@ -1,5 +1,5 @@
 
-<!-- # views/layouts/application.php-->
+<!-- # views/layouts/full_content.php-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,28 +14,30 @@
     <link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet"/>
 </head>
 <body>
+
 <!--Header-->
 <?php
-    require_once('header.php');
+require_once('header.php');
 ?>
-<div class="container">
 
-    <!--Body Section-->
+<!--Body Section-->
+<div class="container">
     <div class="row">
-        <!--categories-->
+        <!--sidebar-->
         <?php
-        require_once ('categories.php');
+        require_once('sidebar.php');
         ?>
 
         <!--products-->
         <?php
         require_once('products.php');
         ?>
-        </div>
+    </div>
 </div>
+
 <!-- footer -->
 <?php
-    require_once ('footer.php');
+require_once ('footer.php');
 ?>
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="assets/js/jquery.js"></script>

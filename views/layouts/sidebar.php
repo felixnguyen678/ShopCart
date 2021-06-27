@@ -1,6 +1,7 @@
 
 <!--sidebar-->
         <div  style="" id="sidebar" class="span3">
+            <!-- categories -->
             <div class="well well-small">
                 <ul class="nav nav-list">
                     <li><a href="products.html"><span class="icon-chevron-right"></span>Điện thoại - Máy tính bảng</a></li>
@@ -18,7 +19,7 @@
                 </ul>
             </div>
             <?php
-            require_once ('the_most_bought_recommendation.php')
+            echo $the_most_bought_recommendation;
             ?>
 
         </div>

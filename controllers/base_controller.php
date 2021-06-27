@@ -6,7 +6,7 @@ class BaseController
 {
     protected $folder;
 
-    function render($file, $data = array())
+    public function render($file, $data = array())
     {
         $view_file = 'views/' . $this->folder . '/' . $file . '.php';
         if (is_file($view_file)) {
@@ -14,9 +14,10 @@ class BaseController
             ob_start();
             require_once($view_file);
             $content = ob_get_clean();
-            require_once('views/layouts/application.php');
+            return $content;
         } else {
             header('Location: index.php?controller=pages&action=error');
+            return NULL;
         }
     }
 }

@@ -1,5 +1,5 @@
 <!--products-->
-        <div class="span9">
+
             <?php
             for ($x = 0; $x <3; $x++) {
                 echo ' <div class="row-fluid">
@@ -12,4 +12,3 @@
                 echo '</ul></div>';
             }
             ?>
-        </div>'
