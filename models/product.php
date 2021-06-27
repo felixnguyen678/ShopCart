@@ -12,19 +12,35 @@ class Product{
     private $isDeleted;
 
     /**
+     * Product constructor.
+     * @param $id
+     * @param $name
+     * @param $price
+     * @param $promotion_price
+     * @param $inventory
+     * @param $description
+     * @param $images
+     * @param $isDeleted
+     */
+    public function __construct($id, $name, $price, $promotion_price, $inventory, $description, $images, $isDeleted)
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->price = $price;
+        $this->promotion_price = $promotion_price;
+        $this->inventory = $inventory;
+        $this->description = $description;
+        $this->images = $images;
+        $this->isDeleted = $isDeleted;
+    }
+
+
+    /**
      * @return mixed
      */
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
     }
 
     /**
@@ -36,27 +52,11 @@ class Product{
     }
 
     /**
-     * @param mixed $name
-     */
-    public function setName($name): void
-    {
-        $this->name = $name;
-    }
-
-    /**
      * @return mixed
      */
     public function getPrice()
     {
         return $this->price;
-    }
-
-    /**
-     * @param mixed $price
-     */
-    public function setPrice($price): void
-    {
-        $this->price = $price;
     }
 
     /**
@@ -68,27 +68,11 @@ class Product{
     }
 
     /**
-     * @param mixed $promotion_price
-     */
-    public function setPromotionPrice($promotion_price): void
-    {
-        $this->promotion_price = $promotion_price;
-    }
-
-    /**
      * @return mixed
      */
     public function getInventory()
     {
         return $this->inventory;
-    }
-
-    /**
-     * @param mixed $inventory
-     */
-    public function setInventory($inventory): void
-    {
-        $this->inventory = $inventory;
     }
 
     /**
@@ -100,27 +84,11 @@ class Product{
     }
 
     /**
-     * @param mixed $description
-     */
-    public function setDescription($description): void
-    {
-        $this->description = $description;
-    }
-
-    /**
      * @return mixed
      */
     public function getImages()
     {
         return $this->images;
-    }
-
-    /**
-     * @param mixed $images
-     */
-    public function setImages($images): void
-    {
-        $this->images = $images;
     }
 
     /**
@@ -131,28 +99,68 @@ class Product{
         return $this->isDeleted;
     }
 
-    /**
-     * @param mixed $isDeleted
-     */
-    public function setIsDeleted($isDeleted): void
+    public function findAll()
     {
-        $this->isDeleted = $isDeleted;
+        $array = array();
+        $collection = Mongo::getInstance()->ShopCart_db->PRODUCTS;
+        $cursor = $collection->find(['isDeleted' => false]);
+        foreach($cursor as $pr){
+            array_push($array,
+                new Product(
+                    $pr['_id'],
+                    $pr['name'],
+                    $pr['price'],
+                    $pr['promotion_price'],
+                    $pr['inventory'],
+                    $pr['description'],
+                    $pr['images'],
+                    $pr['isDeleted']
+                )
+            );
+        }
+        return $array;
+    }
+    public function findById($id){
+        $collection = Mongo::getInstance()->ShopCart_db->PRODUCTS;
+        $cursor = $collection->find(['_id' => new MongoDB\BSON\ObjectId('60d57044b2d9cc20b2764580')]);
+        foreach($cursor as $pr){
+            return new Product(
+                $pr['_id'],
+                $pr['name'],
+                $pr['price'],
+                $pr['promotion_price'],
+                $pr['inventory'],
+                $pr['description'],
+                $pr['images'],
+                $pr['isDeleted']
+            );
+
+        }
+    }
+    public function findByCategory(){
+        ###.....
+    }
+    public function findTheMostBought(){
+        // lua chon ra 2 san pham duoc mua nhieu nhat
+        $query = "match (p:User)-[b:VIEW]->(pr:Product) return pr, count(*) as times order by times desc limit 2";
+        $result = Neo4J::getInstace()->sendCypherQuery($query)->getResult();
+        $array = array();
+        for($i = 1; $i<=2; $i++){
+            array_push($array,
+                new Product(
+                    $result[$i]['n']['id'],
+                    $result[$i]['n']['name'],
+                    $result[$i]['n']['price'],
+                    $result[$i]['n']['promotion_price'],
+                    $result[$i]['n']['inventory'],
+                    $result[$i]['n']['description'],
+                    $result[$i]['n']['images'],
+                    $result[$i]['n']['isDeleted'],
+                )
+            );
+        }
+        return $array;
     }
 
-    public function findAll($page = 1)
-    {
-        $limit = 3;
-        $skip = ($page - 1) * $limit;
-        $sort = array('created' => -1);
-        $options = ['limit' => $limit, 'skip' => $skip, 'sort' => $sort];
-        $collection = Mongo::getInstance()->db->selectCollection("PRODUCTS");
-        $cursor = $collection->find(['isDeleted' => false], $options);
-        return $cursor;
-    }
-    public function countPage()
-    {
-        $quesCount = count($this->db->selectCollection("PRODUCTS")->find(["isDeleted" => false])->toArray());
-        return ceil($quesCount / 3);
-    }
 
 }

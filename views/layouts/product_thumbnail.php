@@ -6,10 +6,5 @@
         <p>tên sp</p>
         <p><strong> $22.00</strong></p>
         <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-        <div class="actionList">
-            <a class="pull-left" href="#">Add to Wish List </a>
-            <a class="pull-left" href="#"> Add to Compare </a>
-        </div>
-        <br class="clr">
     </div>
 </div>

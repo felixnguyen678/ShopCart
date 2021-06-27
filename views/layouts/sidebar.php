@@ -14,8 +14,6 @@
                     <li><a href="products.html"><span class="icon-chevron-right"></span>Thời trang</a></li>
                     <li><a href="products.html"><span class="icon-chevron-right"></span>Xe</a></li>
                     <li><a href="products.html"><span class="icon-chevron-right"></span>Sách vở</a></li>
-                    <li style="border:0"> &nbsp;</li>
-                    <li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
                 </ul>
             </div>
             <?php

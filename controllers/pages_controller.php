@@ -25,6 +25,7 @@ class PagesController extends BaseController
 
     public function error()
     {
-        $this->render('error');
+        $content = $this->render('error');
+        require_once ($this->app_path);
     }
 }
