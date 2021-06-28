@@ -17,7 +17,7 @@ require_once('views/layouts/header.php');
 
             <?php
             require_once ('views/layouts/banner.php');
-                ## products
+            ## products
             echo $GUI_data['products'];
             ?>
 

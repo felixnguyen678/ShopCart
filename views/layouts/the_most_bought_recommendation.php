@@ -6,7 +6,7 @@
     <?php
     for($x = 0; $x<2; $x++){
         echo '<li>';
-        require ('product_thumbnail.php');
+        #require ('product_thumbnail.php');
         echo '</li>';
     }
     ?>

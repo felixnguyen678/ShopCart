@@ -1,5 +1,4 @@
-<?php
-echo '
+
 <!--Header-->
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="topNav">
@@ -15,25 +14,15 @@ echo '
                 <a href="#"><span class="icon-user"></span> My Account</a>
                 <a href="register.html"><span class="icon-edit"></span> Free Register </a>
                 <a href="contact.html"><span class="icon-envelope"></span> Contact us</a>
-                <a href="cart.html"><span class="icon-shopping-cart"></span> 2 Item(s) - <span class="badge badge-warning"> $448.42</span></a>
-                <ul class="nav pull-right">
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
-                        <div class="dropdown-menu">
-                            <form class="form-horizontal loginFrm">
-                                <div class="control-group">
-                                    <input type="text" class="span2" id="inputEmail" placeholder="Email">
-                                </div>
-                                <div class="control-group">
-                                    <input type="password" class="span2" id="inputPassword" placeholder="Password">
-                                </div>
-                                <div class="control-group">
-                                    <button type="submit" class="shopBtn btn-block">Sign in</button>
-                                </div>
-                            </form>
-                        </div>
-                    </li>
-                </ul>
+                <?php
+                if($_SESSION['username'] != "anonymous"){
+                    echo '<a href="cart.html"><span class="icon-shopping-cart"></span> 2 Item(s) - <span class="badge badge-warning"> $448.42</span></a>';
+                }
+                else{
+                    echo '<a href="login.html"><span class="icon-lock"></span> Login</a>';
+                }
+                ?>
+
             </div>
         </div>
     </div>
@@ -50,4 +39,4 @@ echo '
 
             </div>
     </header>
-</div>';
+</div>

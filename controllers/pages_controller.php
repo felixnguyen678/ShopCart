@@ -15,12 +15,27 @@ class PagesController extends BaseController
     public function home()
     {
         $layoutsController = new LayoutsController();
-        $data = array(
+        $GUI_data = array(
             'sidebar' => $layoutsController->sidebar(),
-            'products' => $layoutsController->products()
+            'products' => $layoutsController->allProducts()
         );
-        $content = $this->render('home', $data);
+        $content = $this->render('home', $GUI_data);
         require_once ($this->app_path);
+    }
+
+    public function products(){
+
+        if (isset($_GET['category'])) {
+            $layoutsController = new LayoutsController();
+            $GUI_data = array(
+                'sidebar' => $layoutsController->sidebar(),
+                'products' => $layoutsController->categoryProduct()
+            );
+            $content = $this->render('products', $GUI_data);
+            require_once($this->app_path);
+        }else{
+            $this->error();
+        }
     }
 
     public function error()

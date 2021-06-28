@@ -1,6 +1,6 @@
-<?php
 
-echo '<!-- footer -->
+
+<!-- footer -->
 <footer class="footer">
     <div class="row-fluid">
         <div class="span2">
@@ -12,7 +12,7 @@ echo '<!-- footer -->
             <a href="#">ORDER HISTORY</a><br>
         </div>
         <div class="span2">
-            <h5>Iinformation</h5>
+            <h5>Information</h5>
             <a href="contact.html">CONTACT</a><br>
             <a href="#">SITEMAP</a><br>
             <a href="#">LEGAL NOTICE</a><br>
@@ -35,4 +35,4 @@ echo '<!-- footer -->
             accompanied by English versions from the 1914 translation by H. Rackham.
         </div>
     </div>
-</footer>';
+</footer>

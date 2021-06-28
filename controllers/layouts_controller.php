@@ -1,6 +1,7 @@
 <?php
 # components_controller
 require_once('controllers/base_controller.php');
+require_once('models/product.php');
 
 class LayoutsController extends BaseController
 {
@@ -19,7 +20,12 @@ class LayoutsController extends BaseController
         // con sua lai
         return $this->render('the_most_bought_recommendation');
     }
-    public function products(){
-        return $this->render('products');
+    public function allProducts(){
+        $products_data = Product::findAll();
+        return $this->render('products',array(), $products_data);
+    }
+    public function categoryProduct(){
+        $products_data = Product::findByCategory($_GET['category']);
+        return $this->render('products',array(), $products_data);
     }
 }
