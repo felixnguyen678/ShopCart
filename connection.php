@@ -33,4 +33,13 @@ class Neo4J{
         return self::$instance;
     }
 }
-$neo4J = Neo4J::getInstace();
+$collection = Mongo::getInstance()->ShopCart_db->USERS;
+$cursor = $collection->find(['password'=>'123', 'email' => 'phuc@gmmail.com']);
+foreach($cursor as $us){
+    if(count($us) != 0){
+        print("no");
+    }
+    else {
+        print("ys");
+    }
+}

@@ -37,6 +37,14 @@ class PagesController extends BaseController
             $this->error();
         }
     }
+    public function login(){
+        $layoutsController = new LayoutsController();
+        $GUI_data = array(
+            'login_form' => $layoutsController->loginForm()
+        );
+        $content = $this->render('login', $GUI_data);
+        require_once($this->app_path);
+    }
 
     public function error()
     {

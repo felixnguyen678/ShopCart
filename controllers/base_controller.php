@@ -16,6 +16,7 @@ class BaseController
             $content = ob_get_clean();
             return $content;
         } else {
+
             header('Location: index.php?controller=pages&action=error');
             return NULL;
         }

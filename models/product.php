@@ -1,5 +1,6 @@
 <?php
 #models/product.php
+require_once ('connection.php');
 
 class Product{
     private $id;
@@ -99,7 +100,18 @@ class Product{
         return $this->isDeleted;
     }
 
-    public function findAll()
+    public function toString(){
+        print $this->id.PHP_EOL;
+        print $this->name.PHP_EOL;
+        print $this->price.PHP_EOL;
+        print $this->promotion_price.PHP_EOL;
+        print $this->inventory.PHP_EOL;
+        print $this->description.PHP_EOL;
+        print $this->images[0].PHP_EOL;
+        print $this->isDeleted.PHP_EOL;
+    }
+
+    public static function findAll()
     {
         $array = array();
         $collection = Mongo::getInstance()->ShopCart_db->PRODUCTS;
@@ -120,9 +132,9 @@ class Product{
         }
         return $array;
     }
-    public function findById($id){
+    public static function findById($id){
         $collection = Mongo::getInstance()->ShopCart_db->PRODUCTS;
-        $cursor = $collection->find(['_id' => new MongoDB\BSON\ObjectId('60d57044b2d9cc20b2764580')]);
+        $cursor = $collection->find(['_id' => new MongoDB\BSON\ObjectId($id)]);
         foreach($cursor as $pr){
             return new Product(
                 $pr['_id'],
@@ -134,13 +146,33 @@ class Product{
                 $pr['images'],
                 $pr['isDeleted']
             );
-
         }
     }
-    public function findByCategory(){
-        ###.....
+    public static function findByCategory($category_id){
+        $array = array();
+        $collection = Mongo::getInstance()->ShopCart_db->CATEGORIES;
+        $cursor = $collection->find(['_id' => new MongoDB\BSON\ObjectId($category_id)]);
+        foreach($cursor as $category){
+            for($i=0;$i<count($category['products']);$i++){
+                $pr = $category['products'][$i];
+                array_push($array,
+                    new Product(
+                        $pr['_id'],
+                        $pr['name'],
+                        $pr['price'],
+                        $pr['promotion_price'],
+                        NULL,
+                        NULL,
+                        $pr['images'],
+                        NULL
+                    )
+                );
+            }
+
+        }
+        return $array;
     }
-    public function findTheMostBought(){
+    public static function findTheMostBought(){
         // lua chon ra 2 san pham duoc mua nhieu nhat
         $query = "match (p:User)-[b:VIEW]->(pr:Product) return pr, count(*) as times order by times desc limit 2";
         $result = Neo4J::getInstace()->sendCypherQuery($query)->getResult();
@@ -161,6 +193,4 @@ class Product{
         }
         return $array;
     }
-
-
 }

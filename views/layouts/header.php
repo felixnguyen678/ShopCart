@@ -10,16 +10,19 @@
                     <a href="#"><span class="icon-youtube"></span></a>
                     <a href="#"><span class="icon-tumblr"></span></a>
                 </div>
-                <a href="index.html"> <span class="icon-home"></span> Home</a>
-                <a href="#"><span class="icon-user"></span> My Account</a>
-                <a href="register.html"><span class="icon-edit"></span> Free Register </a>
+                <a href="/"> <span class="icon-home"></span> Home</a>
                 <a href="contact.html"><span class="icon-envelope"></span> Contact us</a>
+
                 <?php
-                if($_SESSION['username'] != "anonymous"){
-                    echo '<a href="cart.html"><span class="icon-shopping-cart"></span> 2 Item(s) - <span class="badge badge-warning"> $448.42</span></a>';
+                session_start();
+                if(isset($_SESSION['session_id'])){
+                    echo ' <a href="#"><span class="icon-user"></span>My Orders History</a>
+                           <a href="cart.html"><span class="icon-shopping-cart"></span> 2 Item(s) - <span class="badge badge-warning"> $448.42</span></a>
+                           <a href="/controllers/logout_controller.php"><span class="icon-lock"></span> Logout</a>
+                           ';
                 }
                 else{
-                    echo '<a href="login.html"><span class="icon-lock"></span> Login</a>';
+                    echo '<a href="/index.php?controller=pages&action=login"><span class="icon-lock"></span> Login</a>';
                 }
                 ?>
 
@@ -32,7 +35,7 @@
         <div class="row">
             <div class="span4">
                 <h1>
-                    <a class="logo" href="index.html"><span></span>
+                    <a class="logo" href="/"><span></span>
                         <img src="/assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
                     </a>
                 </h1>
