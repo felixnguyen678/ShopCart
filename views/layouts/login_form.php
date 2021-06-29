@@ -1,5 +1,5 @@
 <div class="well">
-    <h5>ALREADY REGISTERED ?</h5>
+    <h5>LOGIN</h5>
     <form method="POST" action="/controllers/login_controller.php">
         <div class="control-group">
             <label class="control-label" for="inputEmail">Email</label>
@@ -15,7 +15,7 @@
         </div>
         <div class="control-group">
             <div class="controls">
-                <button type="submit" class="defaultBtn">Sign in</button> <a href="#">Forget password?</a>
+                <button type="submit" class="defaultBtn">Sign in</button>
             </div>
         </div>
     </form>

@@ -28,6 +28,10 @@ class LayoutsController extends BaseController
         $products_data = Product::findByCategory($_GET['category']);
         return $this->render('products',array(), $products_data);
     }
+    public function productDetails(){
+        $product = Product::findById($_GET['product']);
+        return $this->render('product_details', array(), $product);
+    }
     public function loginForm(){
         return $this->render('login_form');
     }

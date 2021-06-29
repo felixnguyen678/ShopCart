@@ -37,6 +37,20 @@ class PagesController extends BaseController
             $this->error();
         }
     }
+    public function product_details(){
+        if( isset($_GET['product'])){
+            $layoutsController = new LayoutsController();
+            $GUI_data = array(
+                'sidebar' => $layoutsController->sidebar(),
+                'product_details' => $layoutsController->productDetails()
+            );
+            $content = $this->render('product_details', $GUI_data);
+            require_once($this->app_path);
+        }
+        else{
+            $this->error();
+        }
+    }
     public function login(){
         $layoutsController = new LayoutsController();
         $GUI_data = array(

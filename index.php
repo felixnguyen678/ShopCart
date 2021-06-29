@@ -1,7 +1,7 @@
 
 <?php
 # index.php
-require_once('session.php');
+
 require_once('connection.php');
 
 if (isset($_GET['controller'])) {

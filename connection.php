@@ -4,7 +4,7 @@ require_once "vendor/autoload.php";
 
 class Mongo
 {
-    private static $instance = NULl;
+    private static $instance = NULL;
     public static function getInstance(){
         if(!isset(self::$instance)){
             $client = new MongoDB\Client;("mongodb://localhost:27017");
@@ -15,8 +15,16 @@ class Mongo
 }
 
 
-class Redis{
 
+class Redis{
+    private static $instance = NULL;
+    public static function getInstance(){
+        if(!isset(self::$instance)){
+            self::$instance = new Predis\Client();
+
+        }
+        return  self::$instance;
+    }
 }
 
 
@@ -33,6 +41,7 @@ class Neo4J{
         return self::$instance;
     }
 }
+/*
 $collection = Mongo::getInstance()->ShopCart_db->USERS;
 $cursor = $collection->find(['password'=>'123', 'email' => 'phuc@gmmail.com']);
 foreach($cursor as $us){
@@ -43,3 +52,6 @@ foreach($cursor as $us){
         print("ys");
     }
 }
+*/
+
+echo Redis::getInstance()->ping();

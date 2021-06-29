@@ -2,7 +2,7 @@
 <?php
 # routes.php
 $controllers = array(
-  'pages' => ['home', 'error', 'products', 'login']
+  'pages' => ['home', 'error', 'products', 'login', 'product_details']
 );
 if (!array_key_exists($controller, $controllers) || !in_array($action, $controllers[$controller])) {
   $controller = 'pages';
