@@ -1,8 +1,6 @@
 <?php
 # components_controller
 require_once('controllers/base_controller.php');
-require_once('models/product.php');
-
 class LayoutsController extends BaseController
 {
 

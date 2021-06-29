@@ -54,4 +54,8 @@ foreach($cursor as $us){
 }
 */
 
-echo Redis::getInstance()->ping();
+$arr = Redis::getInstance()->hgetall('cart:1:psdfroduct1');
+
+if($arr == NULL)
+    print('yes');
+

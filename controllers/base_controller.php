@@ -2,6 +2,7 @@
 
 <?php
 # controllers/base_controller.php
+require_once('models/product.php');
 class BaseController
 {
     protected $folder;
