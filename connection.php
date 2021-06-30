@@ -53,9 +53,3 @@ foreach($cursor as $us){
     }
 }
 */
-
-$arr = Redis::getInstance()->hgetall('cart:1:psdfroduct1');
-
-if($arr == NULL)
-    print('yes');
-
