@@ -1,5 +1,5 @@
 <?php
-require_once ('connection.php');
+require_once ('../connection.php');
 
 class Cart{
     private $_id;
@@ -27,6 +27,7 @@ class Cart{
                     (
                         [id] => product2
                         [name] => Ipad
+                        [image] => sp1.jpg
                         [price] => 1500
                         [number] => 2
                     )
@@ -96,6 +97,16 @@ class Cart{
         }
         return $total_price;
     }
+    public function getTotalAmount(){
+        $total_amount = 0;
+        $products = $this->getProducts();
+        foreach($products as $product){
+            if(isset($product['number'])){
+                $total_amount += $product['number'];
+            }
+        }
+        return $total_amount;
+    }
 
     public static function findCartById($id){
         $redis = Redis::getInstance();
@@ -141,7 +152,8 @@ class Cart{
 
 }
 
-/* test
+/*
+test
 $cart = Cart::findCartById('1');
 
 $new_produt2 = array

@@ -100,15 +100,8 @@ class Product{
         return $this->isDeleted;
     }
 
-    public function toString(){
-        print $this->id.PHP_EOL;
-        print $this->name.PHP_EOL;
-        print $this->price.PHP_EOL;
-        print $this->promotion_price.PHP_EOL;
-        print $this->inventory.PHP_EOL;
-        print $this->description.PHP_EOL;
-        print $this->images[0].PHP_EOL;
-        print $this->isDeleted.PHP_EOL;
+    public function toJSON(){
+        json_encode($this);
     }
 
     public static function findAll()

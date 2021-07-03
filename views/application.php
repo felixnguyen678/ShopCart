@@ -14,9 +14,11 @@
     <link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet"/>
     <!-- Favicons -->
     <link rel="shortcut icon" href="/assets/ico/favicon.ico">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<?= @$content ?>
+<?= @$content?>
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>

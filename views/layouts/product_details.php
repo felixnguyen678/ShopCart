@@ -23,7 +23,12 @@
             <hr class="soft"/>
                 <p><?= @$model_data->getDescription() ?>
                 </p>
-                    <button type="submit" class="shopBtn"><span class=" icon-shopping-cart"></span> Add to cart</button>
+            <form action="/controllers/add_product_to_cart.php" method="POST">
+                <input type="hidden" name="id" value="' .$product_data->getId().'">
+                <input type="hidden" name="name" value="'.$product_data->getName().'">
+                <input type="hidden" name="image" value="'.$product_data->getImages()[0].'">
+                <input type="hidden" name="price" value="'.$product_data->getPrice().'">
+                <input type="submit" value="Add TO CART" class="addCart" >
             </form>
         </div>
     </div>
